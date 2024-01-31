@@ -50,3 +50,18 @@ TagManager:
   - name: StonePlatforms
     uniqueID: 4101578181
     locked: 0
+  - name: Spike
+    uniqueID: 443831563
+    locked: 0
+  - name: Decorations
+    uniqueID: 2707406977
+    locked: 0
+  - name: Ladder
+    uniqueID: 1975813809
+    locked: 0
+  - name: Fence
+    uniqueID: 1056729049
+    locked: 0
+  - name: Player
+    uniqueID: 1962543947
+    locked: 0
