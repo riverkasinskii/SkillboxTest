@@ -9,11 +9,18 @@ public class Player : Character
     private BoxCollider2D myFeetCollider;
     private float gravityScaleAtStart;
     private Vector2 moveInput;
-        
+    private ProjectilePooler projectilePooler;    
+
+    [SerializeField] private string projectileTag;
+    [SerializeField] private Transform shootPoint;
+    [SerializeField] protected float angleOffset = 90f;
+    [SerializeField] protected float rotationSpeed = 7f;
+    [SerializeField] protected float reloadTime = 0.5f;
 
     protected override void Awake()
     {
-        base.Awake();        
+        base.Awake();
+        projectilePooler = ProjectilePooler.Instance;
         myFeetCollider = GetComponent<BoxCollider2D>();
     }
 
@@ -28,7 +35,7 @@ public class Player : Character
             return;
         Walk();
         FlipSprite();
-        ClimbLadder();
+        ClimbLadder();            
     }        
 
     /// <summary>
@@ -39,7 +46,7 @@ public class Player : Character
     {
         if (!isAlive)        
             return;
-        
+        myAnimator.SetBool("isAttack", false);
         moveInput = inputValue.Get<Vector2>();
     }
 
@@ -61,13 +68,42 @@ public class Player : Character
         }
     }
 
+    /// <summary>
+    /// Callback Unity InputSystem
+    /// </summary>
+    /// <param name="inputValue"></param>
+    private void OnFire(InputValue inputValue)
+    {
+        if (!isAlive)
+            return;
+
+        if (inputValue.isPressed)
+        {
+            myAnimator.SetBool("isAttack", true);
+            Shoot();            
+        }
+    }
+    
+    /// <summary>
+    /// PlayerAttack Animation Clip Event
+    /// </summary>
+    private void AttackToggle()
+    {
+        myAnimator.SetBool("isAttack", false);
+    }
+
+    private void Shoot()
+    {
+        projectilePooler.SpawnFromPool(projectileTag, shootPoint.position, transform.rotation);        
+    }
+
     protected override void Walk()
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
 
         Vector2 playerVelocity = new(moveInput.x * walkSpeed, myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
-        myAnimator.SetBool("isWalking", playerHasHorizontalSpeed);
+        myAnimator.SetBool("isWalking", playerHasHorizontalSpeed);        
     }
 
     protected override void FlipSprite()
@@ -90,5 +126,5 @@ public class Player : Character
         Vector2 climbVelocity = new(myRigidbody.velocity.x, moveInput.y * climbSpeed);
         myRigidbody.velocity = climbVelocity;
         myRigidbody.gravityScale = 0f;        
-    }
+    }            
 }

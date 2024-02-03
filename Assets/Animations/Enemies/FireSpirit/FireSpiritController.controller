@@ -57,7 +57,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonIdle
+  m_Name: FireSpiritIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 962e4715b950d6d428f9dbc7eda1919b, type: 2}
+  m_Motion: {fileID: 7400000, guid: e034765dcc06dd04eb16b03620b2be8c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -108,7 +108,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Skeleton
+  m_Name: FireSpiritController
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isWalking
@@ -116,13 +116,13 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: isAttack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -143,7 +143,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonWalking
+  m_Name: FireSpiritWalking
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -157,7 +157,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 70e0391ca3c646f40a8befb32f647f39, type: 2}
+  m_Motion: {fileID: 7400000, guid: 80b27e2c04105bb429b2c8cc02399d5d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -170,7 +170,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonAttack
+  m_Name: FireSpiritAttack
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
@@ -184,7 +184,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fb89bea1527db404fb58bbfdb45a3adf, type: 2}
+  m_Motion: {fileID: 7400000, guid: 89da7c327e39e2c46a35212a585b1b88, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
