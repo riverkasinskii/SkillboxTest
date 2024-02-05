@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public abstract class Character : MonoBehaviour
+[RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
+public abstract class Character : MonoBehaviour, IAttackable
 {
     [SerializeField] protected float walkSpeed = 1f;
+    [SerializeField] protected float currentHealth;    
 
     protected Rigidbody2D myRigidbody;
     protected Animator myAnimator;    
@@ -18,4 +20,13 @@ public abstract class Character : MonoBehaviour
     protected abstract void Walk();
 
     protected abstract void FlipSprite();
+
+    public virtual void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);            
+        }
+    }
 }

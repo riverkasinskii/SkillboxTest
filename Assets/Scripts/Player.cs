@@ -1,27 +1,28 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(BoxCollider2D), typeof(Transform))]
 public class Player : Character
-{    
+{
+    public static Player Instance;
+
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
-            
+    [SerializeField] private string projectileTag;    
+
     private BoxCollider2D myFeetCollider;
     private float gravityScaleAtStart;
     private Vector2 moveInput;
-    private ProjectilePooler projectilePooler;    
-
-    [SerializeField] private string projectileTag;
-    [SerializeField] private Transform shootPoint;
-    [SerializeField] protected float angleOffset = 90f;
-    [SerializeField] protected float rotationSpeed = 7f;
-    [SerializeField] protected float reloadTime = 0.5f;
+    private ProjectilePooler projectilePooler;
+    private Transform shootPoint;
 
     protected override void Awake()
     {
+        Instance = this;
         base.Awake();
         projectilePooler = ProjectilePooler.Instance;
         myFeetCollider = GetComponent<BoxCollider2D>();
+        shootPoint = GetComponent<Transform>().GetChild(0);
     }
 
     private void Start()
@@ -59,7 +60,7 @@ public class Player : Character
         if (!isAlive)        
             return;
         
-        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground")))        
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Interactable")))        
             return;        
 
         if (inputValue.isPressed)
@@ -79,19 +80,21 @@ public class Player : Character
 
         if (inputValue.isPressed)
         {
-            myAnimator.SetBool("isAttack", true);
-            Shoot();            
+            myAnimator.SetBool("isAttack", true);                       
         }
-    }
+    }       
     
     /// <summary>
     /// PlayerAttack Animation Clip Event
     /// </summary>
-    private void AttackToggle()
+    private void AttackStop()
     {
         myAnimator.SetBool("isAttack", false);
     }
 
+    /// <summary>
+    /// PlayerAttack Animation Clip Event
+    /// </summary>
     private void Shoot()
     {
         projectilePooler.SpawnFromPool(projectileTag, shootPoint.position, transform.rotation);        
@@ -126,5 +129,11 @@ public class Player : Character
         Vector2 climbVelocity = new(myRigidbody.velocity.x, moveInput.y * climbSpeed);
         myRigidbody.velocity = climbVelocity;
         myRigidbody.gravityScale = 0f;        
-    }            
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        base.TakeDamage(damage);
+        print(currentHealth);
+    }
 }

@@ -1,13 +1,16 @@
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : Character
-{    
+{
+    [SerializeField] protected int damage = 10;
+
     private bool isAttack = false;
     private const string TARGET_TAG = "Player";
+    private float timeBetweenAttacks = 1f;
 
     protected override void Awake()
-    {
+    {        
         base.Awake();        
     }
 
@@ -38,9 +41,23 @@ public class Enemy : Character
             if (distance)
             {
                 SetAttackState(true);
+                StartCoroutine(CauseDamage(collision, damage));
                 myRigidbody.velocity = new Vector2(0f, 0f);
             }                                   
         }
+    }
+
+    private IEnumerator CauseDamage(Collider2D collision, int damage)
+    {
+        bool isPlayer = collision.TryGetComponent(out Player player);
+        while (player.gameObject.activeSelf)
+        {
+            if (isPlayer)
+            {
+                player.TakeDamage(damage);
+            }
+            yield return new WaitForSeconds(timeBetweenAttacks);
+        }        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -64,8 +81,9 @@ public class Enemy : Character
         transform.localScale = new Vector2(-Mathf.Sign(myRigidbody.velocity.x), 1f);
     }
 
-    public void TakeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
-        throw new NotImplementedException();
+        base.TakeDamage(damage);
+        print(currentHealth);
     }
 }

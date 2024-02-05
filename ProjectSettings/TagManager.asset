@@ -5,15 +5,16 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Interactable
   - Water
   - UI
   - Climbing
-  - 
+  - Projectile
   - 
   - 
   - 
@@ -68,4 +69,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1962543947
+    locked: 0
+  - name: InteractableObjects
+    uniqueID: 1815820921
     locked: 0
