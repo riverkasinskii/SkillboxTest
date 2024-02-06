@@ -13,7 +13,7 @@ public class Projectile : MonoBehaviour
 
     private void Awake()
     {
-        player = Player.Instance;      
+        player = FindObjectOfType<Player>();
         myRigidbody2D = GetComponent<Rigidbody2D>();
     }
 

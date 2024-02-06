@@ -3,12 +3,11 @@ using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(BoxCollider2D), typeof(Transform))]
 public class Player : Character
-{
-    public static Player Instance;
-
+{   
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
-    [SerializeField] private string projectileTag;    
+    [SerializeField] private string projectileTag;
+    [SerializeField] private int spikeDamage = 10;
 
     private BoxCollider2D myFeetCollider;
     private float gravityScaleAtStart;
@@ -17,8 +16,7 @@ public class Player : Character
     private Transform shootPoint;
 
     protected override void Awake()
-    {
-        Instance = this;
+    {        
         base.Awake();
         projectilePooler = ProjectilePooler.Instance;
         myFeetCollider = GetComponent<BoxCollider2D>();
@@ -30,13 +28,13 @@ public class Player : Character
         gravityScaleAtStart = myRigidbody.gravityScale;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!isAlive) 
             return;
         Walk();
         FlipSprite();
-        ClimbLadder();            
+        ClimbLadder();        
     }        
 
     /// <summary>
@@ -60,7 +58,7 @@ public class Player : Character
         if (!isAlive)        
             return;
         
-        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Interactable")))        
+        if (!myFeetCollider.IsTouchingLayers(LayerMask.GetMask("Ground", "Interactable")))        
             return;        
 
         if (inputValue.isPressed)
@@ -104,7 +102,8 @@ public class Player : Character
     {
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
 
-        Vector2 playerVelocity = new(moveInput.x * walkSpeed, myRigidbody.velocity.y);
+        Vector2 playerVelocity = new(moveInput.x * walkSpeed * Time.fixedDeltaTime,
+            myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
         myAnimator.SetBool("isWalking", playerHasHorizontalSpeed);        
     }
@@ -129,6 +128,14 @@ public class Player : Character
         Vector2 climbVelocity = new(myRigidbody.velocity.x, moveInput.y * climbSpeed);
         myRigidbody.velocity = climbVelocity;
         myRigidbody.gravityScale = 0f;        
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Spike"))
+        {
+            TakeDamage(spikeDamage);
+        }
     }
 
     public override void TakeDamage(int damage)

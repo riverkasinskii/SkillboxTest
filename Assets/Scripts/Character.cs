@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
 public abstract class Character : MonoBehaviour, IAttackable
 {
-    [SerializeField] protected float walkSpeed = 1f;
+    [SerializeField] protected float walkSpeed = 100f;
     [SerializeField] protected float currentHealth;    
 
     protected Rigidbody2D myRigidbody;
