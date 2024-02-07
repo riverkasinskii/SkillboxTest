@@ -84,7 +84,7 @@ public class Enemy : Character
         transform.localScale = new Vector2(-Mathf.Sign(myRigidbody.velocity.x), 1f);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
         print(currentHealth);

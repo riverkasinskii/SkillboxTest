@@ -14,13 +14,15 @@ public class Player : Character
     private Vector2 moveInput;
     private ProjectilePooler projectilePooler;
     private Transform shootPoint;
+    private UI ui;
 
     protected override void Awake()
     {        
         base.Awake();
         projectilePooler = ProjectilePooler.Instance;
         myFeetCollider = GetComponent<BoxCollider2D>();
-        shootPoint = GetComponent<Transform>().GetChild(0);
+        shootPoint = GetComponent<Transform>().GetChild(0); 
+        ui = FindObjectOfType<UI>();
     }
 
     private void Start()
@@ -138,9 +140,11 @@ public class Player : Character
         }
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        Stats.Health -= damage;
+        ui.UpdateHealthBar(damage);
         print(currentHealth);
     }
 }

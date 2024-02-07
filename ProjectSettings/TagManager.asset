@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - Enemy
   - Spike
+  - Coin
+  - BlueGem
+  - RedGem
   layers:
   - Default
   - TransparentFX

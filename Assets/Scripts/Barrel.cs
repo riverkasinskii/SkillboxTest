@@ -31,7 +31,7 @@ public class Barrel : MonoBehaviour
             projectile.gameObject.SetActive(false);
             if (hitsBeforeExplosion == 0)
             {
-                circleCollider.radius = 5;
+                circleCollider.radius = 1.5f;
                 StartCoroutine(BarrelLifeTime());
             }
         }

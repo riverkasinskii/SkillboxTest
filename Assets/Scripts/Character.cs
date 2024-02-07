@@ -14,14 +14,15 @@ public abstract class Character : MonoBehaviour, IAttackable
     protected virtual void Awake()
     {
         myRigidbody = GetComponent<Rigidbody2D>();
-        myAnimator = GetComponent<Animator>();        
+        myAnimator = GetComponent<Animator>();
+        Stats.Health = currentHealth;
     }
 
     protected abstract void Walk();
 
     protected abstract void FlipSprite();
 
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
