@@ -13,9 +13,9 @@ public class Interactable : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            if (gameObject.CompareTag("BlueGem"))
+            if (gameObject.CompareTag("NextLevelGem"))
             {
-                Stats.BlueGems += 1;
+                Stats.NextLevelGems += 1;
                 ui.UpdateBlueGems();
             }
             else if(gameObject.CompareTag("RedGem"))

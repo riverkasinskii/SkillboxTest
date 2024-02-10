@@ -17,7 +17,7 @@ public class Projectile : MonoBehaviour
         myRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         Vector2 direction = new Vector2(player.transform.localScale.x, 0);
         myRigidbody2D.AddForce(direction * speed, ForceMode2D.Impulse);

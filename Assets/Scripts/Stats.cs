@@ -6,7 +6,7 @@ public static class Stats
 
     public static int Coins { get; set; } = 0;
 
-    public static int BlueGems { get; set; } = 0;
+    public static int NextLevelGems { get; set; } = 0;
         
     public static int RedGems { get; set; } = 0;
 
@@ -14,7 +14,7 @@ public static class Stats
     {
         Level = 1;
         Coins = 0;
-        BlueGems = 0;
+        NextLevelGems = 0;
         RedGems = 0;
     }
 }

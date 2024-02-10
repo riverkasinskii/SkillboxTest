@@ -7,7 +7,7 @@ public class Player : Character
     [SerializeField] private float jumpSpeed = 5f;
     [SerializeField] private float climbSpeed = 5f;
     [SerializeField] private string projectileTag;
-    [SerializeField] private int spikeDamage = 10;
+    [SerializeField] private int spikeDamage = 5;
 
     private BoxCollider2D myFeetCollider;
     private float gravityScaleAtStart;
@@ -47,7 +47,7 @@ public class Player : Character
     {
         if (!isAlive)        
             return;
-        myAnimator.SetBool("isAttack", false);
+        SetAttackState(false);
         moveInput = inputValue.Get<Vector2>();
     }
 
@@ -80,7 +80,7 @@ public class Player : Character
 
         if (inputValue.isPressed)
         {
-            myAnimator.SetBool("isAttack", true);                       
+            SetAttackState(true);
         }
     }       
     
@@ -89,7 +89,12 @@ public class Player : Character
     /// </summary>
     private void AttackStop()
     {
-        myAnimator.SetBool("isAttack", false);
+        SetAttackState(false);
+    }
+
+    protected override void SetAttackState(bool state)
+    {
+        myAnimator.SetBool("isAttack", state);
     }
 
     /// <summary>
@@ -107,7 +112,7 @@ public class Player : Character
         Vector2 playerVelocity = new(moveInput.x * walkSpeed * Time.fixedDeltaTime,
             myRigidbody.velocity.y);
         myRigidbody.velocity = playerVelocity;
-        myAnimator.SetBool("isWalking", playerHasHorizontalSpeed);        
+        myAnimator.SetBool(WALKING_STATE, playerHasHorizontalSpeed);        
     }
 
     protected override void FlipSprite()

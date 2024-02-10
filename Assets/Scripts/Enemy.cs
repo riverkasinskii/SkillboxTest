@@ -4,6 +4,7 @@ public class Enemy : Character
 {    
     private bool isAttack = false;    
     private const string TARGET_TAG = "Player";
+    private const string RUNNING_STATE = "isRunning";    
     private Player player;    
 
     protected override void Awake()
@@ -14,7 +15,7 @@ public class Enemy : Character
 
     private void Start()
     {
-        myAnimator.SetBool("isWalking", true);        
+        myAnimator.SetBool(WALKING_STATE, true);        
     }
 
     private void FixedUpdate()
@@ -33,7 +34,7 @@ public class Enemy : Character
     {        
         if (collision.gameObject.CompareTag(TARGET_TAG))
         {
-            RunToPlayer();
+            SetRunState(true);
             bool distance = Vector2.Distance(collision.gameObject.transform.position,
             gameObject.transform.position) <= 1f;
             if (distance)
@@ -42,16 +43,11 @@ public class Enemy : Character
             }            
         }
     }
-
-    private void RunToPlayer()
-    {               
-        myAnimator.SetBool("isRunning", true);        
-    }
-
+        
     private void OnTriggerExit2D(Collider2D collision)
     {
         SetAttackState(false);
-        myAnimator.SetBool("isRunning", false);        
+        SetRunState(false);
         if (collision.gameObject.CompareTag("Ground"))
         {
             FlipSprite();
@@ -61,6 +57,7 @@ public class Enemy : Character
     private void AttackPlayer()
     {
         SetAttackState(true);
+        SetRunState(false);
         myRigidbody.velocity = new Vector2(0f, 0f);
     }
 
@@ -70,12 +67,17 @@ public class Enemy : Character
     private void CauseDamage(int damage)
     {
         player.TakeDamage(damage);
-    }        
+    }
 
-    private void SetAttackState(bool state)
+    protected override void SetAttackState(bool state)
     {
         isAttack = state;
-        myAnimator.SetBool("isAttack", isAttack);
+        myAnimator.SetBool(ATTACKING_STATE, isAttack);
+    }
+
+    private void SetRunState(bool state)
+    {
+        myAnimator.SetBool(RUNNING_STATE, state);
     }
 
     protected override void FlipSprite()

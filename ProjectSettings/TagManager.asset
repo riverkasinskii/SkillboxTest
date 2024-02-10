@@ -8,8 +8,8 @@ TagManager:
   - Enemy
   - Spike
   - Coin
-  - BlueGem
   - RedGem
+  - NextLevelGem
   layers:
   - Default
   - TransparentFX
@@ -47,14 +47,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Hills
-    uniqueID: 2960451635
-    locked: 0
   - name: BrickPlatforms
     uniqueID: 2451879561
     locked: 0
   - name: StonePlatforms
     uniqueID: 4101578181
+    locked: 0
+  - name: Hills
+    uniqueID: 2960451635
     locked: 0
   - name: Spike
     uniqueID: 443831563

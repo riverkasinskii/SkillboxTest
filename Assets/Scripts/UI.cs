@@ -16,7 +16,7 @@ public class UI : MonoBehaviour
 
     public void UpdateBlueGems()
     {
-        blueGemsText.text = Stats.BlueGems.ToString("D3");
+        blueGemsText.text = Stats.NextLevelGems.ToString("D3");
     }
 
     public void UpdateRedGems()

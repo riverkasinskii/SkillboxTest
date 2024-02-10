@@ -2,11 +2,22 @@ using UnityEngine;
 
 public class Follow2D : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    private Transform target;
+
     [SerializeField] private Vector3 pose;
     [SerializeField] private float speed = 0.1f;
 
-    private Vector3 velocity;    
+    private Vector3 velocity;
+
+    private void Awake()
+    {
+        target = FindObjectOfType<Player>().transform;        
+    }
+
+    private void Start()
+    {
+        pose = target.position;
+    }
 
     private void FixedUpdate()
     {

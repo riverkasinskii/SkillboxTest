@@ -4,12 +4,15 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour, IAttackable
 {
     [SerializeField] protected float walkSpeed = 100f;
-    [SerializeField] protected float currentHealth;    
+    [SerializeField] protected float currentHealth;
+
+    protected const string ATTACKING_STATE = "isAttack";
+    protected const string WALKING_STATE = "isWalking";
 
     protected Rigidbody2D myRigidbody;
     protected Animator myAnimator;    
 
-    protected readonly bool isAlive = true;
+    protected bool isAlive = true;
 
     protected virtual void Awake()
     {
@@ -22,12 +25,15 @@ public abstract class Character : MonoBehaviour, IAttackable
 
     protected abstract void FlipSprite();
 
+    protected abstract void SetAttackState(bool state);    
+
     public virtual void TakeDamage(float damage)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
-            gameObject.SetActive(false);            
+            gameObject.SetActive(false);
+            isAlive = false;
         }
     }
 }
