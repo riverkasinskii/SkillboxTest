@@ -20592,6 +20592,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1909234560}
     m_Modifications:
+    - target: {fileID: 3934832715610528119, guid: dcd594cd6cffa074ca3690b6837e48fe, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 1473484563}
+    - target: {fileID: 3934832715610528119, guid: dcd594cd6cffa074ca3690b6837e48fe, type: 3}
+      propertyPath: loadingScreen
+      value: 
+      objectReference: {fileID: 1473484564}
     - target: {fileID: 4091743563773231589, guid: dcd594cd6cffa074ca3690b6837e48fe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -21306,6 +21314,22 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e3925cf92e623946a53304d0822afcf, type: 3}
+--- !u!114 &1473484563 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1823984726343472384, guid: 4e3925cf92e623946a53304d0822afcf, type: 3}
+  m_PrefabInstance: {fileID: 1473484562}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1473484564 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2188082609394646725, guid: 4e3925cf92e623946a53304d0822afcf, type: 3}
+  m_PrefabInstance: {fileID: 1473484562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1487443949
 PrefabInstance:
   m_ObjectHideFlags: 0

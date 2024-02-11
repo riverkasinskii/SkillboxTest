@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530000342c8c5ce488b4ff7241bf2b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadingScreen: {fileID: 1914813370848441254, guid: 0b88db56f84b0914995ab3d1d383c548, type: 3}
+  slider: {fileID: 0}
