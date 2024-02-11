@@ -3,22 +3,21 @@ using TMPro;
 using UnityEngine.UI;
 
 public class UI : MonoBehaviour
-{
-    [SerializeField] private TextMeshProUGUI blueGemsText;
+{    
     [SerializeField] private TextMeshProUGUI redGemsText;
     [SerializeField] private TextMeshProUGUI coinsText;
     [SerializeField] private Slider healthBar;
-
+       
+    private void Awake()
+    {
+        SearchGameSessions();
+    }
+        
     private void Start()
     {
         healthBar.value = 1f;
     }
-
-    public void UpdateBlueGems()
-    {
-        blueGemsText.text = Stats.NextLevelGems.ToString("D3");
-    }
-
+        
     public void UpdateRedGems()
     {
         redGemsText.text = Stats.RedGems.ToString("D3");
@@ -32,5 +31,24 @@ public class UI : MonoBehaviour
     public void UpdateHealthBar(float damage)
     {
         healthBar.value -= damage / 100;        
+    }
+
+    public void ResetHealthBar()
+    {
+        healthBar.value = 1f;
+    }
+
+    private void SearchGameSessions()
+    {
+        int numGameSessions = FindObjectsOfType<UI>().Length;
+
+        if (numGameSessions > 1)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
     }
 }

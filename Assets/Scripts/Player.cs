@@ -18,16 +18,17 @@ public class Player : Character
 
     protected override void Awake()
     {        
-        base.Awake();
-        projectilePooler = ProjectilePooler.Instance;
+        base.Awake();        
         myFeetCollider = GetComponent<BoxCollider2D>();
         shootPoint = GetComponent<Transform>().GetChild(0); 
-        ui = FindObjectOfType<UI>();
+        ui = FindObjectOfType<UI>();        
     }
 
     private void Start()
-    {                
+    {
+        projectilePooler = ProjectilePooler.Instance;
         gravityScaleAtStart = myRigidbody.gravityScale;
+        ui.ResetHealthBar();
     }
 
     private void FixedUpdate()
@@ -37,8 +38,8 @@ public class Player : Character
         Walk();
         FlipSprite();
         ClimbLadder();        
-    }        
-
+    }
+        
     /// <summary>
     /// Callback Unity InputSystem
     /// </summary>

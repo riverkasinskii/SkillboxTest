@@ -13,15 +13,17 @@ public class ProjectilePooler : MonoBehaviour
     }
 
     public static ProjectilePooler Instance;
-    public void Awake()
-    {
-        Instance = this;
-    }
-
+    
     public List<Pool> pools;
     public Dictionary<string, Queue<GameObject>> poolDictionary;
 
-    private void Start()
+    private void Awake()
+    {
+        FillPool();
+        Instance = this;
+    }
+
+    private void FillPool()
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
@@ -34,7 +36,6 @@ public class ProjectilePooler : MonoBehaviour
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
-
             poolDictionary.Add(pool.tag, objectPool);
         }
     }

@@ -5,7 +5,7 @@ public abstract class Character : MonoBehaviour, IAttackable
 {
     [SerializeField] protected float walkSpeed = 100f;
     [SerializeField] protected float currentHealth;
-
+        
     protected const string ATTACKING_STATE = "isAttack";
     protected const string WALKING_STATE = "isWalking";
 

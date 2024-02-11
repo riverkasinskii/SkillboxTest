@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,20 +8,19 @@ public class NextLevel : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            LoadNextLevel();
+            StartCoroutine(LoadNextLevel());            
         }
     }
 
-    private void LoadNextLevel()
-    {        
+    private IEnumerator LoadNextLevel()
+    {
+        yield return new WaitForSeconds(2);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
-
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0;
-        }
-                
-        SceneManager.LoadScene(nextSceneIndex);
+        }                
+        SceneManager.LoadScene(nextSceneIndex);        
     }
 }

@@ -4,7 +4,8 @@ public class Enemy : Character
 {    
     private bool isAttack = false;    
     private const string TARGET_TAG = "Player";
-    private const string RUNNING_STATE = "isRunning";    
+    private const string RUNNING_STATE = "isRunning";
+    private const float DISTANCE_TO_TARGET = 0.8f;
     private Player player;    
 
     protected override void Awake()
@@ -30,13 +31,14 @@ public class Enemy : Character
         myRigidbody.velocity = new Vector2(walkSpeed * Time.fixedDeltaTime, 0f);        
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {        
         if (collision.gameObject.CompareTag(TARGET_TAG))
         {
             SetRunState(true);
             bool distance = Vector2.Distance(collision.gameObject.transform.position,
-            gameObject.transform.position) <= 1f;
+            gameObject.transform.position) <= DISTANCE_TO_TARGET;
+            
             if (distance)
             {
                 AttackPlayer();
