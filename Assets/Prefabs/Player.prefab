@@ -329,7 +329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkSpeed: 200
-  currentHealth: 100
+  maxHealth: 100
   jumpSpeed: 20
   climbSpeed: 5
   projectileTag: Arrow

@@ -3,7 +3,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class NextLevel : MonoBehaviour
-{    
+{
+    [SerializeField] private float delayBeforeNextScene = 2f;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -14,7 +16,7 @@ public class NextLevel : MonoBehaviour
 
     private IEnumerator LoadNextLevel()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(delayBeforeNextScene);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         int nextSceneIndex = currentSceneIndex + 1;
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)

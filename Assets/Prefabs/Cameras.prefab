@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6017205676304078791}
   - component: {fileID: 4588477752529108243}
+  - component: {fileID: 2843998534647228997}
   m_Layer: 0
   m_Name: Run Camera
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 2541250120217615328}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -31.842152, y: 0.062886715, z: -9.94735}
+  m_LocalPosition: {x: -32.112152, y: -0.22711325, z: -9.94735}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -72,6 +73,21 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 9150778116922529872}
+--- !u!114 &2843998534647228997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2541250120217615328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f453f694addf4275988fac205bc91968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BoundingShape2D: {fileID: 5391535256921022940, guid: f65be17e42b871b46bf9a7809206f947, type: 3}
+  m_Damping: 0.5
+  m_MaxWindowSize: -1
 --- !u!1 &2555314095084061662
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,11 +306,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
   m_CustomBlends: {fileID: 0}
-  m_ParentHash:
-  - m_Hash: 1158603172
-    m_ParentHash: 756556552
-  - m_Hash: 256545655
-    m_ParentHash: 756556552
+  m_ParentHash: []
 --- !u!1 &8603861349737800251
 GameObject:
   m_ObjectHideFlags: 0
@@ -323,7 +335,7 @@ Transform:
   m_GameObject: {fileID: 8603861349737800251}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.93, y: -6.62, z: -10}
+  m_LocalPosition: {x: -34.2, y: -6.91, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

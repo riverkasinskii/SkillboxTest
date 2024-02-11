@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 48421470553354966, guid: cd298a3fcbc129946b2f1de21cff1d40, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 48421470553354966, guid: cd298a3fcbc129946b2f1de21cff1d40, type: 3}
       propertyPath: currentHealth
       value: 15
       objectReference: {fileID: 0}

@@ -4,7 +4,8 @@ using UnityEngine;
 public abstract class Character : MonoBehaviour, IAttackable
 {
     [SerializeField] protected float walkSpeed = 100f;
-    [SerializeField] protected float currentHealth;
+    [SerializeField] protected float maxHealth;
+    protected float currentHealth;    
         
     protected const string ATTACKING_STATE = "isAttack";
     protected const string WALKING_STATE = "isWalking";
@@ -18,7 +19,8 @@ public abstract class Character : MonoBehaviour, IAttackable
     {
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
-        Stats.Health = currentHealth;
+        currentHealth = maxHealth;
+        Stats.Health = maxHealth;
     }
 
     protected abstract void Walk();

@@ -1,12 +1,15 @@
 using UnityEngine;
 
 public class Enemy : Character
-{    
-    private bool isAttack = false;    
+{
+    [SerializeField] private HealthBar healthBar;
+
     private const string TARGET_TAG = "Player";
     private const string RUNNING_STATE = "isRunning";
     private const float DISTANCE_TO_TARGET = 0.8f;
-    private Player player;    
+
+    private Player player;
+    private bool isAttack = false;
 
     protected override void Awake()
     {        
@@ -91,6 +94,7 @@ public class Enemy : Character
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+        healthBar.SetHealthValue(currentHealth, maxHealth);
         print(currentHealth);
     }
 }

@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private int damage = 5;
     [SerializeField] private float speed = 5f;
-    [SerializeField] private float projectileLifeTime = 3f;
+    [SerializeField] private float projectileLifeTime = 1f;
 
     private Player player;
     private Rigidbody2D myRigidbody2D;
