@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 4647391582631905632}
   m_Layer: 5
   m_Name: LoadingScreen
-  m_TagString: Untagged
+  m_TagString: NextLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -221,10 +221,10 @@ RectTransform:
   - {fileID: 7157345760574970805}
   m_Father: {fileID: 8105507295350389023}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -660.0001, y: -246}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 200}
+  m_SizeDelta: {x: -400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3725891771560611633
 MonoBehaviour:

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Animator))]
-public abstract class Character : MonoBehaviour, IAttackable
+public abstract class Character : MonoBehaviour, IAttackable, ISaveable
 {
     [SerializeField] protected float walkSpeed = 100f;
     [SerializeField] protected float maxHealth;
@@ -24,10 +24,10 @@ public abstract class Character : MonoBehaviour, IAttackable
     }
 
     protected abstract void Walk();
-
     protected abstract void FlipSprite();
-
-    protected abstract void SetAttackState(bool state);    
+    protected abstract void SetAttackState(bool state);
+    public abstract object CaptureState();
+    public abstract void RestoreState(object state);
 
     public virtual void TakeDamage(float damage)
     {
@@ -37,5 +37,5 @@ public abstract class Character : MonoBehaviour, IAttackable
             gameObject.SetActive(false);
             isAlive = false;
         }
-    }
+    }        
 }

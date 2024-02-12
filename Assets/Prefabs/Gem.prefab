@@ -133,3 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fb30eb6ebf4344fbe525a0f34147ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinPickupSFX: {fileID: 0}
+  gemPickupSFX: {fileID: 8300000, guid: c33fb511c6f0d7949bd5f4caa4e3e0dd, type: 3}

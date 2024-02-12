@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Plent
       objectReference: {fileID: 0}
+    - target: {fileID: 5020932124977951599, guid: cd298a3fcbc129946b2f1de21cff1d40, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5685056546622145768, guid: cd298a3fcbc129946b2f1de21cff1d40, type: 3}
       propertyPath: m_Controller
       value: 

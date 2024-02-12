@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3934832715610528119}
   m_Layer: 0
   m_Name: NextLevelGem
-  m_TagString: NextLevelGem
+  m_TagString: NextLevel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,5 +133,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530000342c8c5ce488b4ff7241bf2b0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 1914813370848441254, guid: 0b88db56f84b0914995ab3d1d383c548, type: 3}
+  loadingScreen: {fileID: 0}
   slider: {fileID: 0}

@@ -4,6 +4,7 @@ public class SoundEffects : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip buttonClick;
+    public AudioClip coinPickupSFX;
     public static SoundEffects Instance;
 
     private void Awake()

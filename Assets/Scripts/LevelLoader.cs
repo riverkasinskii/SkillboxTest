@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class LevelLoader : MonoBehaviour
 {
     [SerializeField] private GameObject loadingScreen;
-    [SerializeField] private Slider slider;    
-
+    [SerializeField] private Slider slider;
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
@@ -28,15 +28,15 @@ public class LevelLoader : MonoBehaviour
         if (nextSceneIndex == SceneManager.sceneCountInBuildSettings)
         {
             nextSceneIndex = 0;
-        }
+        }        
         AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneIndex);
         loadingScreen.SetActive(true);
+                
         while (!operation.isDone)
         {
             float progress = operation.progress;
-            slider.value = progress;
-            yield return null; 
-            loadingScreen.SetActive(false);            
+            slider.value = progress;            
+            yield return null;                     
         }        
     }        
 }

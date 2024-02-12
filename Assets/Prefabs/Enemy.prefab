@@ -85,7 +85,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.843
+  m_Value: 0.97
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 8531659906908423122}
   - component: {fileID: 6741194836282522976}
   - component: {fileID: 48421470553354966}
+  - component: {fileID: 7883469877700973026}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
@@ -358,6 +359,19 @@ MonoBehaviour:
   walkSpeed: 100
   maxHealth: 0
   healthBar: {fileID: 6528845192166206894}
+--- !u!114 &7883469877700973026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020932124977951599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de468ee7c0c3c84a986a07b563cf711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
 --- !u!1 &5153037975126874087
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +385,7 @@ GameObject:
   - component: {fileID: 2205989718747624913}
   - component: {fileID: 5184328923464264020}
   - component: {fileID: 6528845192166206894}
+  - component: {fileID: 864987449106524239}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -475,6 +490,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 3052843166262989641}
   offset: {x: 0, y: 0.5, z: 0}
+--- !u!114 &864987449106524239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5153037975126874087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de468ee7c0c3c84a986a07b563cf711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uniqueIdentifier: 
 --- !u!1 &7690881511388392049
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +572,7 @@ RectTransform:
   m_Father: {fileID: 8477932791090580432}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.843, y: 1}
+  m_AnchorMax: {x: 0.97, y: 1}
   m_AnchoredPosition: {x: 2.2310028, y: 0}
   m_SizeDelta: {x: 1.5576, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

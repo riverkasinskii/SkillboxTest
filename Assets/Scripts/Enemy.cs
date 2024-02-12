@@ -67,7 +67,7 @@ public class Enemy : Character
     }
 
     /// <summary>
-    /// EnemyAttack Animation Clip Event, damage = 10
+    /// EnemyAttack Animation Clip Event
     /// </summary>
     private void CauseDamage(int damage)
     {
@@ -93,8 +93,21 @@ public class Enemy : Character
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
-        healthBar.SetHealthValue(currentHealth, maxHealth);
-        print(currentHealth);
+        base.TakeDamage(damage);        
+        healthBar.SetHealthValue(currentHealth, maxHealth);        
+    }
+
+    public override object CaptureState()
+    {          
+        return currentHealth;
+    }
+
+    public override void RestoreState(object state)
+    {        
+        currentHealth = (float)state;
+        if (currentHealth > 0)
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

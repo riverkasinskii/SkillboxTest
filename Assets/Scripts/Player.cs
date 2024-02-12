@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,8 @@ public class Player : Character
     [SerializeField] private float climbSpeed = 5f;
     [SerializeField] private string projectileTag;
     [SerializeField] private int spikeDamage = 5;
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip soundTakeDamage;
 
     private BoxCollider2D myFeetCollider;
     private float gravityScaleAtStart;
@@ -38,8 +41,8 @@ public class Player : Character
         Walk();
         FlipSprite();
         ClimbLadder();        
-    }
-        
+    }        
+
     /// <summary>
     /// Callback Unity InputSystem
     /// </summary>
@@ -103,7 +106,8 @@ public class Player : Character
     /// </summary>
     private void Shoot()
     {
-        projectilePooler.SpawnFromPool(projectileTag, shootPoint.position, transform.rotation);        
+        projectilePooler.SpawnFromPool(projectileTag, shootPoint.position, transform.rotation);
+        AudioSource.PlayClipAtPoint(shootSound, Camera.main.transform.position);
     }
 
     protected override void Walk()
@@ -151,6 +155,27 @@ public class Player : Character
         base.TakeDamage(damage);
         Stats.Health -= damage;
         ui.UpdateHealthBar(damage);
-        print(currentHealth);
+        AudioSource.PlayClipAtPoint(soundTakeDamage, Camera.main.transform.position);        
+    }
+        
+    public override object CaptureState()
+    {
+        Dictionary<string, object> data = new()
+        {
+            ["position"] = new SerializableVector2(transform.position),
+            ["health"] = Stats.Health,
+            ["coins"] = Stats.Coins,
+            ["redGems"] = Stats.RedGems
+        };
+        return data;
+    }
+
+    public override void RestoreState(object state)
+    {
+        Dictionary<string, object> data = (Dictionary<string, object>)state;
+        transform.position = ((SerializableVector2)data["position"]).ToVector();
+        Stats.Health = (float)data["health"];
+        Stats.Coins = (int)data["coins"];
+        Stats.RedGems = (int)data["redGems"];
     }
 }

@@ -1,16 +1,21 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class UI : MonoBehaviour
-{    
+public class UI : MonoBehaviour, ISaveable
+{
+    private const string RED_GEMS_KEY = "redGemsText";
+    private const string COINS_KEY = "coinsText";
+    private const string HEALTH_BAR_KEY = "healthBar";
+
     [SerializeField] private TextMeshProUGUI redGemsText;
     [SerializeField] private TextMeshProUGUI coinsText;
-    [SerializeField] private Slider healthBar;
-       
+    [SerializeField] private Slider healthBar;      
+               
     private void Awake()
     {
-        SearchGameSessions();
+        DontDestroyOnLoad(this);    
     }
         
     private void Start()
@@ -38,17 +43,23 @@ public class UI : MonoBehaviour
         healthBar.value = 1f;
     }
 
-    private void SearchGameSessions()
+    public object CaptureState()
     {
-        int numGameSessions = FindObjectsOfType<UI>().Length;
+        Dictionary<string, object> data = new()
+        {
+            [RED_GEMS_KEY] = redGemsText.text,
+            [COINS_KEY] = coinsText.text,
+            [HEALTH_BAR_KEY] = healthBar.value,            
+        };
+        return data;
+    }
 
-        if (numGameSessions > 1)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            DontDestroyOnLoad(gameObject);
-        }
+    public void RestoreState(object state)
+    {
+        Dictionary<string, object> data = (Dictionary<string, object>)state;
+        redGemsText.text = (string)data[RED_GEMS_KEY];
+        coinsText.text = (string)data[COINS_KEY];
+        healthBar.value = (float)data[HEALTH_BAR_KEY];
+        gameObject.SetActive(true);
     }
 }
